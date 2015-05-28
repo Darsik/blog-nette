@@ -24,11 +24,11 @@ class UserAuthentificate extends Nette\Object implements NS\IAuthenticator {
         COLUMN_ROLE = 'role';
 
 
-    /** @var Nette\Database\Context */
+    /** @var Context */
     private $database;
 
 
-    public function __construct(Nette\Database\Context $database)
+    public function __construct(Context $database)
     {
         $this->database = $database;
     }
