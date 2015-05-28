@@ -22,7 +22,7 @@ class HomepagePresenter extends BasePresenter
 
 	public function renderDefault()
 	{
-        //sdafasdfas
+        
         //asdfasdfs
 	    //$password = 'root' . 't&#ssdf54gh';
 	    //$us = $this->user->authenticate(array('root', sha1($password)));
