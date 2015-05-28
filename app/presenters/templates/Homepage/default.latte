@@ -1,0 +1,29 @@
+{block content}
+	<div class="top clearfix">
+	    <h1>Blog</h1>
+        {*
+	    <?php 
+	      if(isset($_SESSION['USER']))
+	        echo "<a href='logout.php' class='logout'>Odhlásit</a>";
+	      else
+	        echo "<a href='login.php' class='login'>Přihlásit</a><a href='registrace.php' class='register'>Registrace</a>";
+	      ?>*}
+  	</div>
+
+    <div class="posty" id="posty">
+	{foreach $posts as $post}
+	    <div class="ukazkaClanku clearfix">
+		<p class="heading">
+		    <a href="#">{$post['title']}</a>
+		</p>
+		<div class='cross'>
+		    <a href='deletePost.php?id={$post['id']}' class='crossx'>x</a>
+		</div>
+		<b><a href='updatePost.php?id={$post['id']}' class='edit'>Edit</a></b>
+		<div class='text'>{$post['perex']}</div>
+		<b><p class='author'>Autor: {$post['author']}</p></b>
+		<a href='renderPost.php?id={$post['id']}' class='next'>Celý článek</a>
+	    </div>
+	{/foreach}
+    </div>
+{/block}
