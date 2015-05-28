@@ -22,11 +22,11 @@ class HomepagePresenter extends BasePresenter
 
 	public function renderDefault()
 	{
-        $us = $this->user->authenticate(array('root', 'root'));
+        //$us = $this->user->authenticate(array('root', 'root'));
         //asdfasdfs
 	    //$password = 'root' . 't&#ssdf54gh';
 	    //$us = $this->user->authenticate(array('root', sha1($password)));
-	    dump($us);
+	    //dump($us);
            // dump($this->postsRepo->getPosts());
 		$this->template->posts = $this->postsRepo->getPosts();
 	}
