@@ -2,10 +2,10 @@
 
 namespace App\Model;
 
-use Nette;
-use Nette\Security as NS;
-use Nette\Database\Context;
-use Nette\Utils\Strings,
+use Nette,
+    Nette\Security as NS,
+    Nette\Database\Context,
+    Nette\Utils\Strings,
 	Nette\Security\Passwords;
 
 /**
@@ -46,10 +46,10 @@ class UserAuthentificate extends Nette\Object implements NS\IAuthenticator {
         $row = $this->database->table(self::TABLE_NAME)->where(self::COLUMN_LOGIN, $username)->fetch();
 
         if (!$row) {
-            throw new Nette\Security\AuthenticationException('The username is incorrect.', self::IDENTITY_NOT_FOUND);
+            throw new Nette\Security\AuthenticationException('Uživatel neexistuje. (napsali jste jej správně?)', self::IDENTITY_NOT_FOUND);
 
         } elseif (!Passwords::verify($password, $row[self::COLUMN_PASSWORD_HASH])) {
-            throw new Nette\Security\AuthenticationException('The password is incorrect.', self::INVALID_CREDENTIAL);
+            throw new Nette\Security\AuthenticationException('Chybně zadané heslo.', self::INVALID_CREDENTIAL);
 
         } elseif (Passwords::needsRehash($row[self::COLUMN_PASSWORD_HASH])) {
             $row->update(array(

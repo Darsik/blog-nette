@@ -3,7 +3,8 @@
 namespace App\Presenters;
 
 use Nette,
-	App\Model;
+	App\Model,
+    App\Presenters;
 
 
 /**
@@ -17,15 +18,17 @@ class HomepagePresenter extends BasePresenter
     /** @var Model\PostsRepository @inject */
     public $postsRepo;
 
-	/** @var Model\UserAuthentificate @inject */
+    /** @var Nette\Security\User @inject */
 	public $user;
+
 
 	public function renderDefault()
 	{
+        dump($this->user->getIdentity());
+        //$this->user->add('root2','root');
         //$us = $this->user->authenticate(array('root', 'root'));
         //asdfasdfs
 	    //$password = 'root' . 't&#ssdf54gh';
-	    //$us = $this->user->authenticate(array('root', sha1($password)));
 	    //dump($us);
            // dump($this->postsRepo->getPosts());
 		$this->template->posts = $this->postsRepo->getPosts();
