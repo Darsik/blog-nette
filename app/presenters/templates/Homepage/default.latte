@@ -12,7 +12,7 @@
     <div class="info-bar">
         {if $user->isLoggedIn()}
            <a class='user'>{$user->getIdentity()->username}</a>
-           <a href='addPost.php' class='add'>Přidat příspěvek</a>
+           <a n:href="AddPost:add" class='add'>Přidat příspěvek</a>
         {/if}
     </div>
 

@@ -23,6 +23,8 @@ services:
 	- App\Model\UserAuthentificate
 	- App\Model\PostsRepository
 	- App\Model\UserRegister
+	- App\Model\AddPost
 	- App\Forms\SignFormFactory
 	- App\Forms\RegisterFormFactory
+	- App\Forms\AddPostFormFactory
 	router: App\RouterFactory::createRouter
