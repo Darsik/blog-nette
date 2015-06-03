@@ -4,7 +4,7 @@
         <a n:href="Homepage:default" class="back">Hlavní stránka</a>
     </div>
 
-{form signInForm}
+{form registerForm}
     <div class="log">
       	<div class="block">
       	    {label username , class => 'elem' /}
@@ -13,6 +13,10 @@
       	<div class="block">
       	    {label password , class => 'elem' /}
       	    {input password, class => 'bord heslo'}
+      	</div>
+      	<div class="block">
+      	    {label email, class => 'elem' /}
+      	    {input email, class => 'bord email'}
       	</div>
       	<div class="block">
       	    {input send}

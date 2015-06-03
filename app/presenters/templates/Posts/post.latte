@@ -1,0 +1,27 @@
+{block content}
+    <div class="top clearfix">
+	    <h1>Blog</h1>
+        {if $user->isLoggedIn()}
+            <a n:href='Sign:out' class='logout'>Odhlásit</a>
+	    {else}
+	        <a n:href='Sign:in' class='login'>Přihlásit</a>
+	        <a href='registrace.php' class='register'>Registrace</a>
+	    {/if}
+  	</div>
+
+    <div class="info-bar">
+        {if $user->isLoggedIn()}
+           <a class='user'>{$user->getIdentity()->username}</a>
+           <a href='addPost.php' class='add'>Přidat příspěvek</a>
+        {/if}
+    </div>
+
+    <div class='obsah'>
+        <p class='nadpis'>{$post['title']}</p>
+        <div class='obsahText'>{$post['text']}</div>
+        <div class='autor'>Autor: {$post['author']}</div>
+    </div>
+
+    {* přídání komentářů *}
+
+    {* zobrazení komentářů *}

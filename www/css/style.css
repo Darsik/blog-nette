@@ -327,9 +327,14 @@ textarea {
 }
 .marg {
 	margin-top: 50px;
+    list-style: none;
+}
+.marg li {
+    text-align: center;
 }
 .log {
 	width: 250px;
+    padding-top: 30px;
 	margin: 0 auto;
 }
 .pridatPost form {
@@ -352,6 +357,7 @@ textarea {
 }
 .block {
 	text-align: left;
+    margin-bottom: 10px;
 }
 .block input {
 	width: 100%;

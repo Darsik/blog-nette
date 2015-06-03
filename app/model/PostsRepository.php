@@ -26,4 +26,10 @@ class PostsRepository {
         $query = $this->db->table(self::TABLE)->select('*');
         return $query->fetchAll();
     }
+
+    public function getPost($id)
+    {
+        $query = $this->db->table(self::TABLE)->select('*')->where('id', $id);
+        return $query->fetch();
+    }
 }

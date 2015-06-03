@@ -22,5 +22,7 @@ session:
 services:
 	- App\Model\UserAuthentificate
 	- App\Model\PostsRepository
+	- App\Model\UserRegister
 	- App\Forms\SignFormFactory
+	- App\Forms\RegisterFormFactory
 	router: App\RouterFactory::createRouter

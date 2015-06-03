@@ -3,7 +3,8 @@
 namespace App\Presenters;
 
 use Nette,
-	App\Forms\SignFormFactory;
+	App\Forms\SignFormFactory,
+    App\Model\UserAuthentificate;
 
 
 /**
@@ -14,26 +15,35 @@ class SignPresenter extends BasePresenter
 	/** @var SignFormFactory @inject */
 	public $factory;
 
+    /** @var UserAuthentificate @inject */
+    public $auth;
 
-	/**
-	 * Sign-in form factory.
-	 * @return Nette\Application\UI\Form
-	 */
+
+
+    public function actionIn()
+    {
+        $this->createComponentSignInForm();
+    }
+    /**
+     * Sign-in form factory.
+     * @return Nette\Application\UI\Form
+     */
 	protected function createComponentSignInForm()
 	{
-		$form = $this->factory->create();
+        $this->getUser()->setAuthenticator($this->auth);
+		$form = $this->factory->createComponentLogin();
 		$form->onSuccess[] = function ($form) {
+            $values = $form->getValues();
+            $this->getUser()->login($values['username'], $values['password']);
+            $this->getUser()->setExpiration('30 minutes', TRUE);
 			$form->getPresenter()->redirect('Homepage:');
 		};
 		return $form;
 	}
 
-
 	public function actionOut()
 	{
 		$this->getUser()->logout();
-		$this->flashMessage('You have been signed out.');
-		$this->redirect('in');
+		$this->redirect('Homepage:');
 	}
-
 }

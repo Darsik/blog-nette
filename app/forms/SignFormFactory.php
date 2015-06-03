@@ -23,10 +23,10 @@ class SignFormFactory extends Nette\Object
 	/**
 	 * @return Form
 	 */
-	public function create()
+	public function createComponentLogin()
 	{
 		$form = new Form;
-		$form->addText('username', 'Uživatelské jméno:')
+		$form->addText('username', 'Jméno:')
 			->setRequired('Prosím, zadejte vaše uživatelské jméno.');
 
 		$form->addPassword('password', 'Heslo:')
@@ -41,8 +41,6 @@ class SignFormFactory extends Nette\Object
 
 	public function formSucceeded($form, $values)
 	{
-
-
 		try {
 			$this->user->authenticate(array($values->username, $values->password));
 		} catch (Nette\Security\AuthenticationException $e) {
