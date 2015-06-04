@@ -25,9 +25,11 @@
     <div class='pridatKoment'>
         <div class="pridatKoment2">
             {if $user->isLoggedIn()}
-                {form $komentForm}
-                    <textarea name='text' class='bord' placeholder='Komentář'></textarea>
-                    <input type='submit' name='submit' value='Odeslat' class='addKoment'>
+                {form addKomentForm}
+                    <!--textarea name='text' class='bord' placeholder='Komentář'></textarea-->
+                    {input text, class => 'bord'}
+                    <!--input type='submit' name='submit' value='Odeslat' class='addKoment'-->
+                    {input send, class => 'addKoment'}
                 {/form}
             {else}
                 <div class='chciLogin'>Pro přidání komentáře se musíte <a href='login.php'>přihlásit</a></div>

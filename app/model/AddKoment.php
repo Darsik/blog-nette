@@ -24,9 +24,10 @@ class AddKoment {
 
     public function addKoment($text, $name, $id)
     {
-        $this->db->table(self::TABLE)->where(self::COLUMN_ID, $id)->insert(array(
+        $this->db->table(self::TABLE)->insert(array(
             self::COLUMN_TEXT => $text,
-            self::CULUMN_NAME => $name
+            self::CULUMN_NAME => $name,
+            self::COLUMN_ID => $id
         ));
     }
 }

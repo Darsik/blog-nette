@@ -15,7 +15,7 @@ class AddKomentFormFactory extends Nette\Object
     {
         $form = new Form;
         $form->addTextArea('text', 'Text:')
-            ->setRequired('Prosím, zadejte titulek.');
+            ->setRequired('Prosím, zadejte komentář.');
 
         $form->addSubmit('send', 'Odeslat');
 

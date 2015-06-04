@@ -21,15 +21,17 @@ class PostsPresenter extends BasePresenter
     /** @var Model\PostsRepository @inject */
     public $postsRepo;
 
+    public $id;
+
     public function renderPost($id)
     {
         $this->template->post = $this->postsRepo->getPost($id);
-        $this->template->komentForm = $this->createComponentAddKomentForm();
     }
 
 
-    public function actionAddKoment()
+    public function actionPost($id)
     {
+        $this->id = $id;
         $this->createComponentAddKomentForm();
     }
 
@@ -38,8 +40,9 @@ class PostsPresenter extends BasePresenter
         $form = $this->factory->createComponentAddKoment();
         $form->onSuccess[] = function ($form) {
             $values = $form->getValues();
-            $this->addKom->addKoment($values['text'], $this->getUser()->getIdentity()->username, $this->getParam('id'));
-            $form->getPresenter()->redirect('Posts:post');
+
+            $this->addKom->addKoment($values['text'], $this->getUser()->getIdentity()->username, $this->id);
+            $form->getPresenter()->redirect('Posts:post',$this->id);
         };
         return $form;
     }
