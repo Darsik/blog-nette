@@ -25,16 +25,16 @@
                 {if $user->isLoggedIn()}
                     {if $user->getIdentity()->role == 2}
                         <div class='cross'>
-                            <a href='deletePost.php?id={$post['id']}' class='crossx'>x</a>
+                            <a n:href="Delete:delete $post['id']" class='_crossx'>x</a>
                         </div>
                     {elseif $user->getIdentity()->username == $post['author']}
                         <div class='cross'>
-                            <a href='deletePost.php?id={$post['id']}' class='crossx'>x</a>
+                            <a n:href="Delete:delete $post['id']" class='_crossx'>x</a>
                         </div>
                     {/if}
                 {/if}
                 <b>
-                    <a href='updatePost.php?id={$post['id']}' class='edit'>Edit</a>
+                    <a n:href="UpdatePost:update" class='edit'>Edit</a>
                 </b>
                 <div class='text'>{$post['perex']}</div>
                 <b>

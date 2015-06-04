@@ -1,0 +1,37 @@
+{block content}
+    <div class="top clearfix">
+        <h1>Blog</h1>
+        {if $user->isLoggedIn()}
+            <a n:href='Sign:out' class='logout'>Odhlásit</a>
+        {else}
+            <a n:href='Sign:in' class='login'>Přihlásit</a>
+            <a n:href="Register:register" class='register'>Registrace</a>
+        {/if}
+    </div>
+
+    <div class="info-bar">
+        {if $user->isLoggedIn()}
+            <a class='user'>{$user->getIdentity()->username}</a>
+            <a n:href="AddPost:add" class='add'>Přidat příspěvek</a>
+        {/if}
+    </div>
+
+    <div class="pridatPost">
+        {form updatePostForm}
+            <div class="inline">
+                {label title, class => 'elem' /}
+                {input title, class => 'title bord'}
+            </div>
+            <div class="inline">
+                {label perex, class => 'elem' /}
+                {input perex, class => 'bord'}
+            </div>
+            <div class="left">
+                <!--p class="elem">Text:</p>
+                <textarea id="edit" name="text"></textarea-->
+                {label text, class => 'elem' /}
+                {input text, id => 'edit'}
+            </div>
+            {input send, class => 'addBut'}
+        {/form}
+    </div>

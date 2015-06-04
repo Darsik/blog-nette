@@ -18,10 +18,31 @@
 
     <div class='obsah'>
         <p class='nadpis'>{$post['title']}</p>
-        <div class='obsahText'>{$post['text']}</div>
+        <div class='obsahText'>{$post['text']|striptags}</div>
         <div class='autor'>Autor: {$post['author']}</div>
     </div>
 
-    {* přídání komentářů *}
+    <div class='pridatKoment'>
+        <div class="pridatKoment2">
+            {if $user->isLoggedIn()}
+                {form $komentForm}
+                    <textarea name='text' class='bord' placeholder='Komentář'></textarea>
+                    <input type='submit' name='submit' value='Odeslat' class='addKoment'>
+                {/form}
+            {else}
+                <div class='chciLogin'>Pro přidání komentáře se musíte <a href='login.php'>přihlásit</a></div>
+            {/if}
+        </div>
+      </div>
+
+    <!--div class="komenty">
+        <div class="komenty2">
+          <?php/*
+            foreach ($coments as $coment) {
+              echo "<div class='koment'><p class='komentAutor'>" . $coment['name'] . " napsal: </p>" . (($admin == 1)? "<div class='crossKom'><a href='deleteKoment.php?id=" . $coment['id'] . "&id_post=" . $_GET['id'] . "'>x</a></div>":(($userLog == $coment['name'])? "<div class='crossKom'><a href='deleteKoment.php?id=" . $coment['id'] . "&id_post=" . $_GET['id'] . "'>x</a></div>":"")) . "<p class='komentText'>" . $coment['text'] . "</p></div>";
+            }
+          */?>
+        </div>
+      </div-->
 
     {* zobrazení komentářů *}

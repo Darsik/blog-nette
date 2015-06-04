@@ -24,7 +24,11 @@ services:
 	- App\Model\PostsRepository
 	- App\Model\UserRegister
 	- App\Model\AddPost
+	- App\Model\UpdatePost
+	- App\Model\DeletePost
+	- App\Model\AddKoment
 	- App\Forms\SignFormFactory
 	- App\Forms\RegisterFormFactory
 	- App\Forms\AddPostFormFactory
+	- App\Forms\AddKomentFormFactory
 	router: App\RouterFactory::createRouter
