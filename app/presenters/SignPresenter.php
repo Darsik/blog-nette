@@ -36,7 +36,7 @@ class SignPresenter extends BasePresenter
             $values = $form->getValues();
             $this->getUser()->login($values['username'], $values['password']);
             $this->getUser()->setExpiration('30 minutes', TRUE);
-			$form->getPresenter()->redirect('Homepage:');
+			$this->redirect('Homepage:');
 		};
 		return $form;
 	}

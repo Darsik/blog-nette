@@ -11,7 +11,7 @@ use Nette,
 class SignFormFactory extends Nette\Object
 {
     /** @var UserAuthentificate @inject */
-	private $user;
+	public $user;
 
 
 	public function __construct(UserAuthentificate $user)

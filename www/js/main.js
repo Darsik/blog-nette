@@ -2,7 +2,7 @@ $(function(){
 
     $('#edit').editable({inlineMode: false});
 
-    $(".crossKom a").confirm({
+   /* $(".crossKom a").confirm({
         text: "Jste si jist, že chcete smazat tento komentář?",
         title: "Potvrzení o smazání",
         confirmButton: "Ano, jsem.",
@@ -66,7 +66,7 @@ $(function(){
                 });
             });
         }
-    });
+    });*/
 
     $(".dleAutora p").click(function() {
         $(".autori").slideToggle('slow');

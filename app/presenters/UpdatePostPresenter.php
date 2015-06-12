@@ -18,15 +18,16 @@ class UpdatePostPresenter extends BasePresenter {
     /** @var PostsRepository @inject */
     public $postsRepo;
 
-    protected $id;
+    public $id;
 
-    public function actionUpdatePost()
+    public function actionUpdatePost($id)
     {
+        $this->id = $id;
         $this->createComponentUpdatePostForm();
     }
     protected function createComponentUpdatePostForm()
     {
-        $this->id = $this->getParam('id');
+
         $post = $this->postsRepo->getPost($this->id);
         $form = $this->factory->createComponentAddPost();
         $form->setDefaults(array(
@@ -37,7 +38,7 @@ class UpdatePostPresenter extends BasePresenter {
         $form->onSuccess[] = function ($form) {
             $values = $form->getValues();
             $this->update->updatePost($values['title'], $values['text'], $values['perex'], $this->id);
-            $form->getPresenter()->redirect('Homepage:');
+            $this->redirect('Homepage:');
         };
         return $form;
     }

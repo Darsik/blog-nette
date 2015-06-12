@@ -33,7 +33,7 @@ class RegisterPresenter extends BasePresenter {
                 $this->register->add($values['username'], $values['password'], $values['email']);
                 $this->getUser()->login($values['username'], $values['password']);
                 $this->getUser()->setExpiration('30 minutes', TRUE);
-                $form->getPresenter()->redirect('Homepage:');
+                $this->redirect('Homepage:');
             }
             else $form->addError('Uživatelské jméno už je zabrané, zvolte jiné');
         };

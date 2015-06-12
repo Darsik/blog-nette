@@ -1,18 +1,19 @@
 {block content}
     <div class="top clearfix">
 	    <h1>Blog</h1>
+	    <a n:href="Homepage:default" class="back">Hlavní stránka</a>
         {if $user->isLoggedIn()}
             <a n:href='Sign:out' class='logout'>Odhlásit</a>
 	    {else}
 	        <a n:href='Sign:in' class='login'>Přihlásit</a>
-	        <a href='registrace.php' class='register'>Registrace</a>
+	        <a n:href="Register:register" class='register'>Registrace</a>
 	    {/if}
   	</div>
 
     <div class="info-bar">
         {if $user->isLoggedIn()}
            <a class='user'>{$user->getIdentity()->username}</a>
-           <a href='addPost.php' class='add'>Upravit Příspěvěk</a>
+           <a n:href="AddPost:add" class='add'>Přidat příspěvek</a>
         {/if}
     </div>
 
@@ -26,25 +27,35 @@
         <div class="pridatKoment2">
             {if $user->isLoggedIn()}
                 {form addKomentForm}
-                    <!--textarea name='text' class='bord' placeholder='Komentář'></textarea-->
                     {input text, class => 'bord'}
-                    <!--input type='submit' name='submit' value='Odeslat' class='addKoment'-->
                     {input send, class => 'addKoment'}
                 {/form}
             {else}
-                <div class='chciLogin'>Pro přidání komentáře se musíte <a href='login.php'>přihlásit</a></div>
+                <div class='chciLogin'>Pro přidání komentáře se musíte
+                    <a n:href='Sign:in' class='login'>Přihlásit</a>
+                </div>
             {/if}
         </div>
       </div>
 
-    <!--div class="komenty">
+    <div class="komenty">
         <div class="komenty2">
-          <?php/*
-            foreach ($coments as $coment) {
-              echo "<div class='koment'><p class='komentAutor'>" . $coment['name'] . " napsal: </p>" . (($admin == 1)? "<div class='crossKom'><a href='deleteKoment.php?id=" . $coment['id'] . "&id_post=" . $_GET['id'] . "'>x</a></div>":(($userLog == $coment['name'])? "<div class='crossKom'><a href='deleteKoment.php?id=" . $coment['id'] . "&id_post=" . $_GET['id'] . "'>x</a></div>":"")) . "<p class='komentText'>" . $coment['text'] . "</p></div>";
-            }
-          */?>
+            {foreach $coments as $coment}
+              <div class='koment'>
+                <p class='komentAutor'>{$coment['name']} napsal: </p>
+                {if $user->isLoggedIn()}
+                   {if $user->getIdentity()->role == 2}
+                       <div class='crossKom'>
+                            <a n:href="DeleteComment:deletecomment, $coment['id'], $post['id']">x</a>
+                       </div>
+                   {elseif $user->getIdentity()->username == $coment['name']}
+                       <div class='crossKom'>
+                            <a n:href="DeleteComment:deletecomment, $coment['id'], $post['id']">x</a>
+                       </div>
+                   {/if}
+                 {/if}
+                <p class='komentText'>{$coment['text']}</p>
+              </div>
+            {/foreach}
         </div>
-      </div-->
-
-    {* zobrazení komentářů *}
+    </div>

@@ -27,8 +27,10 @@ services:
 	- App\Model\UpdatePost
 	- App\Model\DeletePost
 	- App\Model\AddKoment
+	- App\Model\DeleteComment
 	- App\Forms\SignFormFactory
 	- App\Forms\RegisterFormFactory
 	- App\Forms\AddPostFormFactory
 	- App\Forms\AddKomentFormFactory
+	- App\Forms\FilterFormFactory
 	router: App\RouterFactory::createRouter

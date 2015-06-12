@@ -16,6 +16,21 @@
         {/if}
     </div>
 
+    <div class="fitrace zarovnani">
+        <div class="vse filtry">
+            <p>Vybrat Vše</p>
+        </div>
+        <div class="dleAutora filtry">
+            <p>Podle Autora</p>
+        </div>
+        <div class="autori">
+            {form filterForm, class => 'filterForm'}
+                {input filter, class => 'inputAutor bord'}
+                {input send, class => 'elem'}
+            {/form}
+        </div>
+      </div>
+
     <div class="posty" id="posty">
         {foreach $posts as $post}
             <div class="ukazkaClanku clearfix">
@@ -32,10 +47,12 @@
                             <a n:href="Delete:delete $post['id']" class='_crossx'>x</a>
                         </div>
                     {/if}
+                    {if $user->getIdentity()->username == $post['author']}
+                        <b>
+                            <a n:href="UpdatePost:updatePost $post['id']" class='edit'>Edit</a>
+                        </b>
+                    {/if}
                 {/if}
-                <b>
-                    <a n:href="UpdatePost:update" class='edit'>Edit</a>
-                </b>
                 <div class='text'>{$post['perex']}</div>
                 <b>
                     <p class='author'>Autor: {$post['author']}</p>

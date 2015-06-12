@@ -24,7 +24,7 @@ class AddPostPresenter extends BasePresenter {
         $form->onSuccess[] = function ($form) {
             $values = $form->getValues();
             $this->add->addPost($values['title'], $values['text'], $values['perex'], $this->getUser()->getIdentity()->username);
-            $form->getPresenter()->redirect('Homepage:');
+            $this->redirect('Homepage:');
         };
         return $form;
     }
